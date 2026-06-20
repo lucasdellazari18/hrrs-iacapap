@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HRRS @ IACAPAP 2026 — Schedule of Talks & Posters</title>
+<style>
+  :root{
+    /* brand */
+    --navy:#283A6B; --teal:#1C7293; --coral:#E85A60;
+    /* surfaces — cool neutral greys */
+    --bg:#eef1f5; --card:#ffffff; --thead:#f4f6f9;
+    --ink:#1f2533; --muted:#697485; --line:#e3e7ee; --hover:#f7f9fc;
+    /* type accents (text/strong) */
+    --sym:#1C7293; --oral:#283A6B; --poster:#9a6a00; --keynote:#7a3b8f; --ceremony:#c0484e;
+    /* type soft fills */
+    --sym-bg:#e6f0f4; --oral-bg:#e8ebf3; --poster-bg:#f6eeda; --keynote-bg:#f0e7f4; --ceremony-bg:#fbe7e8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       line-height:1.45;}
+  header{background:linear-gradient(120deg,var(--navy) 0%,#22507e 55%,var(--teal) 100%);color:#fff;padding:30px 22px 24px;}
+  header h1{margin:0 0 4px;font-size:1.5rem;letter-spacing:.2px}
+  header .sub{opacity:.92;font-size:.95rem}
+  header .meta{margin-top:10px;font-size:.82rem;opacity:.82}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 18px 60px}
+  .controls{position:sticky;top:0;z-index:20;background:var(--bg);
+            padding:14px 0 10px;border-bottom:1px solid var(--line);margin-bottom:6px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  input[type=search]{flex:1 1 240px;min-width:200px;padding:10px 12px;border:1px solid var(--line);
+      border-radius:10px;font-size:.95rem;background:#fff}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  .seg button{border:0;background:#fff;padding:9px 13px;font-size:.85rem;cursor:pointer;color:var(--ink)}
+  .seg button.on{background:var(--navy);color:#fff}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:.8rem;
+        cursor:pointer;color:var(--muted)}
+  .chip.on{border-color:var(--navy);color:var(--navy);font-weight:600;box-shadow:inset 0 0 0 1px var(--navy)}
+  .count{font-size:.8rem;color:var(--muted);margin:12px 2px 4px}
+  .daygroup{margin-top:18px}
+  .dayhd{font-size:1.05rem;font-weight:700;color:var(--navy);margin:14px 2px 8px;
+         display:flex;align-items:center;gap:10px}
+  .dayhd .pill{font-size:.72rem;font-weight:600;background:var(--navy);color:#fff;border-radius:999px;padding:2px 9px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;
+        box-shadow:0 1px 2px rgba(40,58,107,.06),0 2px 8px rgba(40,58,107,.04);margin-bottom:8px}
+  thead th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);
+           padding:9px 12px;border-bottom:1px solid var(--line);background:var(--thead);white-space:nowrap}
+  tbody td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.9rem}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--hover)}
+  .who{font-weight:700}
+  .who small{display:block;font-weight:400;color:var(--muted);font-size:.78rem;margin-top:1px}
+  .nick{font-weight:600;color:var(--teal)}
+  .rolebadge{display:inline-block;font-size:.66rem;font-weight:700;border-radius:5px;padding:1px 6px;
+             margin-left:6px;vertical-align:middle}
+  .rolebadge.fellow{background:var(--sym-bg);color:var(--teal)}
+  .rolebadge.mentor{background:var(--keynote-bg);color:var(--keynote)}
+  .time{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .code{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ttitle{color:var(--ink)}
+  .typetag{display:inline-block;font-size:.68rem;font-weight:700;border-radius:6px;padding:3px 9px;white-space:nowrap;border:1px solid transparent}
+  .typetag.Symposium{background:var(--sym-bg);color:var(--sym);border-color:#cfe2ea}
+  .typetag.OralPresentation{background:var(--oral-bg);color:var(--oral);border-color:#d3d9ea}
+  .typetag.Poster{background:var(--poster-bg);color:var(--poster);border-color:#eaddbf}
+  .typetag.KeynoteSession{background:var(--keynote-bg);color:var(--keynote);border-color:#e2d2ea}
+  .typetag.OpeningCeremony{background:var(--ceremony-bg);color:var(--ceremony);border-color:#f4cdcf}
+  .sub{font-size:.74rem;color:var(--muted);margin-top:3px}
+  .sub.chair{color:var(--coral);font-weight:700}
+  .flag{font-size:.78rem;color:var(--muted)}
+  .empty{padding:30px;text-align:center;color:var(--muted)}
+  footer{max-width:1120px;margin:0 auto;padding:20px 18px 40px;color:var(--muted);font-size:.78rem}
+  @media(max-width:680px){
+    .hidemob{display:none}
+    tbody td{font-size:.86rem}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>HRRS 2025 Team — Talks &amp; Posters</h1>
+  <div class="sub">27th World Congress of IACAPAP · Hamburg · 1–4 July 2026</div>
+  <div class="meta">Helmut Remschmidt Research Seminar fellows &amp; mentors</div>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <div class="row">
+      <input id="q" type="search" placeholder="Search name, title, session code, country…">
+      <div class="seg" id="roleSeg">
+        <button data-role="all" class="on">All</button>
+        <button data-role="fellow">Fellows</button>
+        <button data-role="mentor">Mentors</button>
+      </div>
+      <div class="seg" id="viewSeg">
+        <button data-view="day" class="on">By day</button>
+        <button data-view="person">By person</button>
+      </div>
+    </div>
+    <div class="chips" id="typeChips">
+      <span class="chip on" data-type="all">All types</span>
+      <span class="chip" data-type="Symposium">Symposium</span>
+      <span class="chip" data-type="Oral Presentation">Oral Presentation</span>
+      <span class="chip" data-type="Poster">Poster</span>
+      <span class="chip" data-type="Keynote Session">Keynote Session</span>
+      <span class="chip" data-type="Opening Ceremony">Opening Ceremony</span>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+  <div id="out"></div>
+</div>
+
+<script>
+const DATA = [{"name": "Lucas Dellazari", "call": "Lucas", "role": "fellow", "country": "Brazil", "inst": "UFRGS, Porto Alegre", "items": [{"code": "S-020-001", "title": "Beyond high-income countries: Perspectives on autism prevalence from low- and middle-income countries", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}, {"code": "S-020", "title": "Bridging the gap in Autism care across LMICs: From prevalence to assessment and intervention", "type": "Symposium", "sub": "Chair", "day": "2026-07-02", "time": "15:00–16:30"}]}, {"name": "Rebecca Mortazavi", "call": "Rebecca", "role": "fellow", "country": "Sweden", "inst": "Lund University, Halmstad", "items": [{"code": "OP-03-004", "title": "Exercise versus leisure activities for adolescents with depression: a multicentre randomised controlled trial", "type": "Oral Presentation", "sub": "Speaker", "day": "2026-07-02", "time": "08:30–10:00"}]}, {"name": "Carolin Röse-Werkmann", "call": "Caro", "role": "fellow", "country": "Germany", "inst": "Justus-Liebig University, Gießen", "items": [{"code": "S-006-002", "title": "Freezing in children with Selective Mutism", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "08:30–10:00"}]}, {"name": "Müge Mutlu", "call": "Müge", "role": "fellow", "country": "Turkey", "inst": "Istanbul Silivri State Hospital", "items": [{"code": "S-015-001", "title": "Borderline personality traits in adolescence", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "10:30–12:00"}, {"code": "P-09-005", "title": "Phubbing in Adolescents with ADHD: Associations with Emotion Regulation Difficulties and Maternal Alexithymia", "type": "Poster", "sub": "Poster", "day": "2026-07-02", "time": "13:45–15:00"}]}, {"name": "Kristýna Študlarová (Prosková)", "call": "Kristýna", "role": "fellow", "country": "Czechia", "inst": "Children's Psychiatric Hospital, Opařany", "items": [{"code": "S-015-002", "title": "D-BOAT: DBT program addressing borderline traits in Czech adolescents", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "10:30–12:00"}, {"code": "P-22-009", "title": "Beyond the Ward: Post-Discharge Trajectories Following Adolescent Psychiatric Hospitalization in the Czech Republic — a Study Protocol", "type": "Poster", "sub": "Poster", "day": "2026-07-03", "time": "13:45–15:00"}]}, {"name": "Puthy Pat", "call": "Puthy", "role": "fellow", "country": "Cambodia", "inst": "Caritas-CCAMH, Takhmau", "items": [{"code": "P-18-004", "title": "Mental health problems and suicidal behaviors among young prisoners in Cambodia", "type": "Poster", "sub": "Poster", "day": "2026-07-02", "time": "13:45–15:00"}, {"code": "OP-17-001", "title": "Psychological difficulties among displaced infants and toddlers at the Cambodia-Thailand border: A cross-sectional study", "type": "Oral Presentation", "sub": "Speaker", "day": "2026-07-03", "time": "15:00–16:30"}, {"code": "P-58-002", "title": "Early identification of psychological difficulties among infants and toddlers: a cross-sectional study from Cambodia", "type": "Poster", "sub": "Poster", "day": "2026-07-04", "time": "13:45–15:00"}]}, {"name": "Pierre Augé", "call": "Pierre", "role": "fellow", "country": "France", "inst": "Université Versailles Saint-Quentin", "items": [{"code": "P-05-002", "title": "Clinical and cerebral correlates of cholesterol-metabolism biomarkers in Autism Spectrum Disorder", "type": "Poster", "sub": "Poster", "day": "2026-07-02", "time": "13:45–15:00"}]}, {"name": "Samiha Laoures Meddouri", "call": "Laoures", "role": "fellow", "country": "Tunisia", "inst": "Mongi Slim Hospital / Faculty of Medicine of Tunis", "items": [{"code": "S-020-002", "title": "Assessment of autism — barriers to multidimensional evaluation", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}, {"code": "P-17-003", "title": "Adverse Childhood Experiences Among Tunisian Medical Residents", "type": "Poster", "sub": "Poster", "day": "2026-07-02", "time": "13:45–15:00"}, {"code": "P-36-001", "title": "Validation of the Tunisian Version of the Inventory of Statements About Self-Injury (ISAS) in a Clinical Adolescent Population", "type": "Poster", "sub": "Poster", "day": "2026-07-03", "time": "13:45–15:00"}]}, {"name": "Bailey Driscoll", "call": "Bailey", "role": "fellow", "country": "USA", "inst": "University of Miami Miller School of Medicine", "items": [{"code": "P-18-009", "title": "Mental Health Interventions for Adult Survivors of Childhood Institutional and Clerical Abuse: A Scoping Review", "type": "Poster", "sub": "Poster", "day": "2026-07-02", "time": "13:45–15:00"}]}, {"name": "Maximilian Niebler", "call": "Max", "role": "fellow", "country": "Germany", "inst": "University of Regensburg / medbo Bezirksklinikum", "items": [{"code": "S-024-001", "title": "Short-chain carnitines in adolescent major depressive disorder: Associations and biomarker potential", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}, {"code": "S-108-004", "title": "Intercultural challenges in addressing neurodevelopmental disorders in displaced children: A comparative cross-border approach", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Marisa Viljoen", "call": "Marisa", "role": "fellow", "country": "South Africa", "inst": "University of Cape Town", "items": [{"code": "S-020-003", "title": "Telehealth-delivered caregiver coaching for autism in South Africa: In search of caregiver and child signals of change", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}]}, {"name": "Marc Daniel Ferger", "call": "Marc", "role": "fellow", "country": "Germany / Canada", "inst": "Universitätsklinik Köln / Calgary", "items": [{"code": "OP-07-001", "title": "Regulatory Pathways for Psychiatric Medicines in Children and Adolescents: A Systematic Review of EMA Paediatric Committee Activity", "type": "Oral Presentation", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}]}, {"name": "Covadonga Canga-Espina", "call": "Cova", "role": "fellow", "country": "Spain", "inst": "Clínica Universidad de Navarra, Pamplona", "items": [{"code": "S-024-004", "title": "Association between blood concentration of sertraline and its effectiveness and safety: Exploratory results of a study in children and adolescents", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}, {"code": "P-29-008", "title": "Presence of Flynn Effect in a child and adolescent ADHD-sample in Spain", "type": "Poster", "sub": "Poster", "day": "2026-07-03", "time": "13:45–15:00"}]}, {"name": "Kasturi Atmaram Sakhardande", "call": "Kasturi", "role": "fellow", "country": "India", "inst": "NIMHANS, Bengaluru", "items": [{"code": "S-020-004", "title": "Complementary and alternative medicine and therapies in India: Perspective from a low- and middle-income country", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "15:00–16:30"}, {"code": "P-49-007", "title": "Effect of transcranial direct current stimulation on executive functioning among autistic adolescents — an open label study", "type": "Poster", "sub": "Poster", "day": "2026-07-04", "time": "13:45–15:00"}]}, {"name": "Marta Berni", "call": "Marta", "role": "fellow", "country": "Italy", "inst": "University of Florence / IRCCS Stella Maris", "items": [{"code": "P-41-007", "title": "The role of parenting in the development of executive functions: evidence from early childhood", "type": "Poster", "sub": "Poster", "day": "2026-07-03", "time": "13:45–15:00"}]}, {"name": "Rokas Šambaras", "call": "Rokas", "role": "fellow", "country": "Lithuania", "inst": "Vilnius University / Karoliniškės Polyclinic", "items": [{"code": "OP-17-002", "title": "Living Under War Shadows: Perceived War Threats and Mental Health Among Lithuanian Adolescents", "type": "Oral Presentation", "sub": "Speaker", "day": "2026-07-03", "time": "15:00–16:30"}, {"code": "S-108-005", "title": "Refugee children's mental healthcare in Lithuania: specialists' perspectives on current practice and opportunities", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Emely Reyentanz", "call": "Emely", "role": "fellow", "country": "Germany", "inst": "Universitätsklinik Oldenburg (KJPP)", "items": [{"code": "S-091-003", "title": "The influence of maternal childhood trauma on prenatal risk factors for infant mental health disorders", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "10:30–12:00"}]}, {"name": "Camilla Parker", "call": "Camilla", "role": "fellow", "country": "United Kingdom", "inst": "Queen Mary University of London", "items": [{"code": "OP-24-002", "title": "To be or not to be (in school): A qualitative study of the emotional experiences and processes underpinning school non-attendance from neurodivergent students' point of view", "type": "Oral Presentation", "sub": "Speaker", "day": "2026-07-04", "time": "10:30–12:00"}, {"code": "S-108-002", "title": "Harnessing protective factors to promote mental health and resilience in refugee and asylum-seeking children in the UK", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Yelyzaveta Korniiko", "call": "Liza", "role": "fellow", "country": "France", "inst": "Centre Hospitalier Fondation Vallée, Paris", "items": [{"code": "S-108-001", "title": "Invisible migration: Mental health adaptation of internally war-displaced Ukrainian adolescents", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "15:00–16:30"}, {"code": "S-108-003", "title": "Targeting the mental health of children and their caregivers displaced from Ukraine in France: challenges and opportunities", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Javier Sanchez-Cerezo", "call": "Javier", "role": "fellow", "country": "Spain", "inst": "Puerta de Hierro University Hospital, Majadahonda", "items": [{"code": "S-108", "title": "Addressing cultural and systemic challenges in working with displaced children and adolescents across Europe", "type": "Symposium", "sub": "Chair", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Alexandra Ntiso", "call": "Alex", "role": "fellow", "country": "Germany", "inst": "Justus-Liebig-University, Gießen", "items": [{"code": "S-113-002", "title": "Selective Mutism or Autism Spectrum Disorder: Exploring similarities, understanding differences", "type": "Symposium", "sub": "Speaker", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Petrus J. de Vries", "call": "Petrus", "role": "mentor", "country": "South Africa", "inst": "University of Cape Town", "items": [{"code": "S-020", "title": "Bridging the gap in Autism care across LMICs: From prevalence to assessment and intervention", "type": "Symposium", "sub": "Co-Chair", "day": "2026-07-02", "time": "15:00–16:30"}, {"code": "P-26", "title": "Public Mental Health, Prevention & Early Intervention IV: Neurodevelopment and Family-Centred Early Support", "type": "Poster", "sub": "Session Chair", "day": "2026-07-03", "time": "13:45–15:00"}, {"code": "S-108", "title": "Addressing cultural and systemic challenges in working with displaced children and adolescents across Europe", "type": "Symposium", "sub": "Co-Chair", "day": "2026-07-04", "time": "15:00–16:30"}]}, {"name": "Helmut Remschmidt", "call": "Helmut", "role": "mentor", "country": "Germany", "inst": "Philipps-Universität Marburg", "items": [{"code": "OC-01", "title": "Opening Ceremony of the 27th World Congress of IACAPAP 2026", "type": "Opening Ceremony", "sub": "Speaker", "day": "2026-07-01", "time": "16:30–18:30"}]}, {"name": "Anna Ordóñez", "call": "Anna", "role": "mentor", "country": "USA", "inst": "NIMH", "items": [{"code": "S-060-001", "title": "Session introduction", "type": "Symposium", "sub": "Speaker", "day": "2026-07-03", "time": "15:00–16:30"}, {"code": "S-060", "title": "Bridging borders: Global models of collaboration to strengthen child and adolescent psychiatry training and capacity", "type": "Symposium", "sub": "Co-Chair", "day": "2026-07-03", "time": "15:00–16:30"}]}, {"name": "Bruno Falissard", "call": "Bruno", "role": "mentor", "country": "France", "inst": "Université Paris-Sud", "items": [{"code": "KN-02-001", "title": "Is there a child and adolescent psychiatric colonialism?", "type": "Opening Ceremony", "sub": "Speaker", "day": "2026-07-02", "time": "09:00–09:30"}, {"code": "S-039-003", "title": "Phenomenological rupture: A clinical and philosophical approach to the psychiatric patient", "type": "Symposium", "sub": "Speaker", "day": "2026-07-03", "time": "08:30–10:00"}, {"code": "S-050-005", "title": "The IACAPAP Massive Open Online Course (MOOC)", "type": "Symposium", "sub": "Speaker", "day": "2026-07-03", "time": "10:30–12:00"}, {"code": "S-061-002", "title": "IACAPAP MOOC: Essentials of child and adolescent mental health across the world", "type": "Symposium", "sub": "Speaker", "day": "2026-07-03", "time": "15:00–16:30"}, {"code": "S-061", "title": "Rising to the challenge: Key IACAPAP Global Initiatives for Workforce Capacity Building in CAMH", "type": "Symposium", "sub": "Co-Chair", "day": "2026-07-03", "time": "15:00–16:30"}, {"code": "P-18", "title": "Childhood Maltreatment and Sexual Abuse", "type": "Poster", "sub": "Session Chair", "day": "2026-07-02", "time": "13:45–15:00"}]}, {"name": "Carmen Schröder", "call": "Carmen", "role": "mentor", "country": "France", "inst": "Strasbourg University Hospital", "items": [{"code": "KN-04", "title": "Systems strengthening for child and youth mental health: Lessons from the field", "type": "Keynote Session", "sub": "Session Chair", "day": "2026-07-02", "time": "11:15–12:00"}, {"code": "P-48", "title": "Autism V: Addressing Complex Comorbidity", "type": "Poster", "sub": "Session Chair", "day": "2026-07-04", "time": "13:45–15:00"}]}, {"name": "Christina Schwenck", "call": "Christina", "role": "mentor", "country": "Germany", "inst": "Justus-Liebig-University of Gießen", "items": [{"code": "S-006", "title": "Selective Mutism: From underlying mechanisms to treatment", "type": "Symposium", "sub": "Chair", "day": "2026-07-02", "time": "08:30–10:00"}, {"code": "OP-06", "title": "Emotion Regulation and Externalizing Problems in Youth", "type": "Oral Presentation", "sub": "Session Chair", "day": "2026-07-02", "time": "10:30–12:00"}]}, {"name": "Maretha de Jonge", "call": "Maretha", "role": "mentor", "country": "Netherlands", "inst": "University Leiden", "items": [{"code": "S-006-001", "title": "Caught in the spotlight: Emotion recognition and arousal in children with Selective Mutism", "type": "Symposium", "sub": "Speaker", "day": "2026-07-02", "time": "08:30–10:00"}]}];
+const DAYS = {
+  "2026-07-01":{lbl:"Wednesday 1 July", short:"Wed"},
+  "2026-07-02":{lbl:"Thursday 2 July",  short:"Thu"},
+  "2026-07-03":{lbl:"Friday 3 July",    short:"Fri"},
+  "2026-07-04":{lbl:"Saturday 4 July",  short:"Sat"},
+};
+// flatten into rows
+let ROWS=[];
+DATA.forEach(p=>p.items.forEach(it=>ROWS.push({
+  name:p.name, call:p.call, role:p.role, country:p.country, inst:p.inst,
+  code:it.code, title:it.title, type:it.type, sub:it.sub, day:it.day, time:it.time
+})));
+
+let state={role:"all", type:"all", view:"day", q:""};
+
+function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function timeKey(t){let m=t.match(/(\d{2}):(\d{2})/);return m?(+m[1])*60+(+m[2]):0}
+function dispName(r){
+  // insert nickname after first name, only if it adds info
+  const parts=r.name.split(" ");
+  const first=parts[0];
+  const call=(r.call||"").trim();
+  if(!call || call.toLowerCase()===first.toLowerCase()) return esc(r.name);
+  return esc(first)+' <span class="nick">('+esc(call)+')</span> '+esc(parts.slice(1).join(" "));
+}
+
+function match(r){
+  if(state.role!=="all" && r.role!==state.role) return false;
+  if(state.type!=="all" && r.type!==state.type) return false;
+  if(state.q){
+    const q=state.q.toLowerCase();
+    const hay=(r.name+" "+r.call+" "+r.title+" "+r.code+" "+r.country+" "+r.inst+" "+r.type+" "+r.sub).toLowerCase();
+    if(!hay.includes(q)) return false;
+  }
+  return true;
+}
+function roleBadge(role){return '<span class="rolebadge '+role+'">'+(role==="fellow"?"Fellow":"Mentor")+'</span>'}
+function typeTag(t){var slug=t.replace(/[^A-Za-z]+/g,"");return '<span class="typetag '+slug+'">'+t+'</span>'}
+function subLine(sub){
+  const isChair=/chair/i.test(sub);
+  return '<div class="sub'+(isChair?' chair':'')+'">'+esc(sub)+'</div>';
+}
+
+function renderDay(rows){
+  let html="";
+  Object.keys(DAYS).forEach(day=>{
+    let rs=rows.filter(r=>r.day===day).sort((a,b)=>timeKey(a.time)-timeKey(b.time)||a.code.localeCompare(b.code));
+    if(!rs.length) return;
+    html+='<div class="daygroup"><div class="dayhd"><span class="pill">'+DAYS[day].short+'</span>'+DAYS[day].lbl+
+          ' <span style="font-weight:400;color:var(--muted);font-size:.8rem">('+rs.length+')</span></div><table>'+
+          '<thead><tr><th>Time</th><th>Code</th><th>Type</th><th>Presenter</th><th>Title</th></tr></thead><tbody>';
+    rs.forEach(r=>{
+      html+='<tr>'+
+        '<td class="time">'+esc(r.time)+'</td>'+
+        '<td class="code">'+esc(r.code)+'</td>'+
+        '<td>'+typeTag(r.type)+'</td>'+
+        '<td class="who">'+dispName(r)+roleBadge(r.role)+'<small>'+esc(r.country)+'</small></td>'+
+        '<td><span class="ttitle">'+esc(r.title)+'</span>'+subLine(r.sub)+'</td>'+
+      '</tr>';
+    });
+    html+='</tbody></table></div>';
+  });
+  return html||'<div class="empty">No sessions match these filters.</div>';
+}
+
+function renderPerson(rows){
+  let people=[...new Set(rows.map(r=>r.name))].sort((a,b)=>a.localeCompare(b));
+  let html="";
+  people.forEach(nm=>{
+    let rs=rows.filter(r=>r.name===nm).sort((a,b)=>a.day.localeCompare(b.day)||timeKey(a.time)-timeKey(b.time));
+    let r0=rs[0];
+    html+='<div class="daygroup"><div class="dayhd">'+dispName(r0)+roleBadge(r0.role)+
+          ' <span style="font-weight:400;color:var(--muted);font-size:.8rem">— '+esc(r0.inst)+'</span></div><table>'+
+          '<thead><tr><th>Day</th><th>Time</th><th>Code</th><th>Type</th><th>Title</th></tr></thead><tbody>';
+    rs.forEach(r=>{
+      html+='<tr>'+
+        '<td class="time">'+DAYS[r.day].short+'</td>'+
+        '<td class="time">'+esc(r.time)+'</td>'+
+        '<td class="code">'+esc(r.code)+'</td>'+
+        '<td>'+typeTag(r.type)+'</td>'+
+        '<td><span class="ttitle">'+esc(r.title)+'</span>'+subLine(r.sub)+'</td>'+
+      '</tr>';
+    });
+    html+='</tbody></table></div>';
+  });
+  return html||'<div class="empty">No sessions match these filters.</div>';
+}
+
+function render(){
+  let rows=ROWS.filter(match);
+  document.getElementById("out").innerHTML = state.view==="day"?renderDay(rows):renderPerson(rows);
+  let nP=new Set(rows.map(r=>r.name)).size;
+  document.getElementById("count").textContent=rows.length+" activities · "+nP+" people"+
+     (state.role!=="all"?" · "+state.role+"s":"")+(state.type!=="all"?" · "+state.type:"");
+}
+
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value;render()});
+document.querySelectorAll("#roleSeg button").forEach(b=>b.onclick=()=>{
+  state.role=b.dataset.role;document.querySelectorAll("#roleSeg button").forEach(x=>x.classList.remove("on"));b.classList.add("on");render();});
+document.querySelectorAll("#viewSeg button").forEach(b=>b.onclick=()=>{
+  state.view=b.dataset.view;document.querySelectorAll("#viewSeg button").forEach(x=>x.classList.remove("on"));b.classList.add("on");render();});
+document.querySelectorAll("#typeChips .chip").forEach(c=>c.onclick=()=>{
+  state.type=c.dataset.type;document.querySelectorAll("#typeChips .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");render();});
+
+render();
+</script>
+</body>
+</html>
