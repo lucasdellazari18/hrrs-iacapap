@@ -71,8 +71,31 @@
   .empty{padding:30px;text-align:center;color:var(--muted)}
   footer{max-width:1120px;margin:0 auto;padding:20px 18px 40px;color:var(--muted);font-size:.78rem}
   @media(max-width:680px){
-    .hidemob{display:none}
-    tbody td{font-size:.86rem}
+    .wrap{padding:0 12px 50px}
+    .row{gap:6px}
+    input[type=search]{flex:1 1 100%}
+    .seg{flex:1 1 auto}
+    .seg button{flex:1 1 auto}
+    header{padding:22px 16px 18px}
+    header h1{font-size:1.25rem}
+
+    /* turn each table into a stack of cards */
+    table{box-shadow:none;background:transparent;border-radius:0}
+    thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;
+             padding:10px 12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(40,58,107,.05)}
+    tbody tr:hover{background:var(--card)}
+    tbody td{display:flex;gap:10px;align-items:flex-start;border:0;padding:3px 0;font-size:.92rem}
+    tbody td:before{content:attr(data-label);flex:0 0 76px;color:var(--muted);
+                    font-size:.66rem;text-transform:uppercase;letter-spacing:.4px;font-weight:700;
+                    padding-top:2px}
+    /* title row: bigger, full width feel */
+    tbody td[data-label="Title"]{flex-direction:column;gap:2px;margin-top:4px;
+                    border-top:1px solid var(--line);padding-top:8px}
+    tbody td[data-label="Title"]:before{flex-basis:auto}
+    .ttitle{font-weight:600;line-height:1.35}
+    .who small{display:inline;margin-left:0}
+    .code{font-size:.95rem}
   }
 </style>
 </head>
@@ -165,11 +188,11 @@ function renderDay(rows){
           '<thead><tr><th>Time</th><th>Code</th><th>Type</th><th>Presenter</th><th>Title</th></tr></thead><tbody>';
     rs.forEach(r=>{
       html+='<tr>'+
-        '<td class="time">'+esc(r.time)+'</td>'+
-        '<td class="code">'+esc(r.code)+'</td>'+
-        '<td>'+typeTag(r.type)+'</td>'+
-        '<td class="who">'+dispName(r)+roleBadge(r.role)+'<small>'+esc(r.country)+'</small></td>'+
-        '<td><span class="ttitle">'+esc(r.title)+'</span>'+subLine(r.sub)+'</td>'+
+        '<td class="time" data-label="Time">'+esc(r.time)+'</td>'+
+        '<td class="code" data-label="Code">'+esc(r.code)+'</td>'+
+        '<td data-label="Type">'+typeTag(r.type)+'</td>'+
+        '<td class="who" data-label="Presenter">'+dispName(r)+roleBadge(r.role)+'<small>'+esc(r.country)+'</small></td>'+
+        '<td data-label="Title"><span class="ttitle">'+esc(r.title)+'</span>'+subLine(r.sub)+'</td>'+
       '</tr>';
     });
     html+='</tbody></table></div>';
@@ -188,11 +211,11 @@ function renderPerson(rows){
           '<thead><tr><th>Day</th><th>Time</th><th>Code</th><th>Type</th><th>Title</th></tr></thead><tbody>';
     rs.forEach(r=>{
       html+='<tr>'+
-        '<td class="time">'+DAYS[r.day].short+'</td>'+
-        '<td class="time">'+esc(r.time)+'</td>'+
-        '<td class="code">'+esc(r.code)+'</td>'+
-        '<td>'+typeTag(r.type)+'</td>'+
-        '<td><span class="ttitle">'+esc(r.title)+'</span>'+subLine(r.sub)+'</td>'+
+        '<td class="time" data-label="Day">'+DAYS[r.day].short+'</td>'+
+        '<td class="time" data-label="Time">'+esc(r.time)+'</td>'+
+        '<td class="code" data-label="Code">'+esc(r.code)+'</td>'+
+        '<td data-label="Type">'+typeTag(r.type)+'</td>'+
+        '<td data-label="Title"><span class="ttitle">'+esc(r.title)+'</span>'+subLine(r.sub)+'</td>'+
       '</tr>';
     });
     html+='</tbody></table></div>';
